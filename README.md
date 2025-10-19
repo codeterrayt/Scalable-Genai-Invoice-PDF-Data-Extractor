@@ -36,11 +36,8 @@ AI-powered backend system to extract structured data from multi-page invoices an
 ---
 
 ## High-Level Architecture
-```
+<img width="1213" height="553" alt="Scalable-Genai-Invoice-PDF-Data-Extractor-LLD" src="https://github.com/user-attachments/assets/43c51579-487e-4bae-be17-8c7c62c1be28" />
 
-[Insert your HLD diagram image here]
-
-````
 
 **Workflow Summary:**
 1. Users upload invoices via `/api/file/upload`.  
@@ -182,7 +179,7 @@ WORKER_CONCURRENCY=100
 
 ---
 
-## Sample Output (Direct Gen AI)
+## Sample Output
 
 ```yaml
 items:
@@ -249,4 +246,5 @@ errors:
 ## License
 
 This project is licensed under the **MIT License**.
+
 

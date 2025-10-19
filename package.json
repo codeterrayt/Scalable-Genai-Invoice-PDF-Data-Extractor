@@ -1,0 +1,29 @@
+{
+  "name": "invoice-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --env-file=.env --watch index.js",
+    "worker": "node --env-file=.env worker/file.worker.js",
+    "queue:flush": "node --env-file=.env scripts/amqp.flush.js",
+    "start": "pm2 start ecosystem.config.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^1.24.0",
+    "amqplib": "^0.10.9",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "ioredis": "^5.8.1",
+    "js-yaml": "^4.1.0",
+    "mongoose": "^8.19.1",
+    "multer": "^2.0.2",
+    "pm2": "^6.0.13",
+    "rate-limit-redis": "^4.2.2",
+    "zod": "^4.1.12"
+  }
+}

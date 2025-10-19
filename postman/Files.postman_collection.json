@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "61d15d3c-237c-4e2b-bd8a-431ca5136583",
+		"name": "Files",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33944158"
+	},
+	"item": [
+		{
+			"name": "fetch all files (with filters)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"flag\":true,\r\n \"status\":\"error\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/api/file",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"file"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch file by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": [
+								"invoices/failed/invoice-sample-9.jpg",
+								"invoices/failed/invoice-sample-12.jpg"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/api/file/68ea63d74cdaecf47b56bccf",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"file",
+						"68ea63d74cdaecf47b56bccf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload files",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/api/file/upload",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"file",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

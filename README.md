@@ -6,9 +6,10 @@ AI-powered backend system to extract structured data from multi-page invoices an
 ---
 
 ## Table of Contents
-- [Demo Video](#demo-video)
 - [Features](#features)  
 - [High-Level Architecture](#high-level-architecture)  
+- [Dead Letter Queue (DLQ)](#dead-letter-queue-dlq)
+- [Retry Strategy with Exponential Backoff](#retry-strategy-with-exponential-backoff)
 - [Tech Stack](#tech-stack)  
 - [Installation & Setup](#installation--setup)  
 - [Scripts](#scripts)  
@@ -20,10 +21,6 @@ AI-powered backend system to extract structured data from multi-page invoices an
 - [Token Efficiency](#token-efficiency)  
 - [Postman Collection](#postman-collection)  
 - [License](#license)  
-
----
-## Demo Video 
-
 
 ---
 
@@ -51,6 +48,24 @@ AI-powered backend system to extract structured data from multi-page invoices an
 4. YAML output generated → converted to JSON → stored in MongoDB.  
 5. Validation checks applied; errors flagged.  
 6. Processed results accessible via API.  
+
+
+### Dead Letter Queue (DLQ)
+- Invoices or jobs that **fail processing** (e.g., unreadable files, persistent GenAI errors) are automatically routed to a **Dead Letter Queue (DLQ)**.  
+- DLQ allows you to **review failed jobs**, retry them manually, or trigger alerts.  
+- Keeps the main RabbitMQ queue **unblocked** and ensures smooth processing of other invoices.  
+- Common use cases:
+  - Corrupted PDF or image
+  - Unsupported invoice format
+  - Persistent AI extraction failure
+  - or any other Error
+
+### Retry Strategy with Exponential Backoff
+- Failed jobs are **retried automatically** using an **exponential backoff** strategy.  
+- Wait time increases after each failed attempt (e.g., 60s → 120s → 180s → 240s) to prevent overloading the system.  
+- Jobs exceeding the maximum retry count are sent to the **Dead Letter Queue (DLQ)** for manual review or alerts.  
+- Ensures smooth processing while handling temporary errors gracefully.
+
 
 ---
 

@@ -1,4 +1,5 @@
-# Scalable GenAI Invoice PDF Data Extractor ![InvoiceAI](https://img.shields.io/badge/Scalable-GenAI%20Invoice%20Extractor-blue) 
+# Scalable GenAI Invoice PDF Data Extractor 
+![InvoiceAI](https://img.shields.io/badge/Scalable-GenAI%20Invoice%20Extractor-blue) 
 
 **One-liner:**  
 AI-powered backend system to extract structured data from multi-page invoices and PDFs and Images at scale, flag errors, and store results efficiently.
